@@ -20,7 +20,7 @@ class CreateOrdersTable extends Migration
             $table->bigInteger('userId')->unsigned()->nullable();
             $table->string('sessionId');
             $table->string('token');
-            $table->tinyInteger('status')->default(0);
+            $table->smallInteger('status')->default(0);
             $table->float('total');
             $table->float('subTotal');
             $table->float('discount');

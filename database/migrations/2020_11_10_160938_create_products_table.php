@@ -23,13 +23,13 @@ class CreateProductsTable extends Migration
             $table->string('metaTitle')->nullable();
             $table->string('slug');
             $table->text('summary')->nullable();
-            $table->tinyInteger('type');
+            $table->smallInteger('type')->default(0);
             $table->string('sku');
-            $table->float('price');
-            $table->float('discount');
-            $table->tinyInteger('quantity');
-            $table->tinyInteger('shop');
-            $table->text('content');
+            $table->float('price')->default(0);
+            $table->float('discount')->default(0);
+            $table->smallInteger('quantity')->default(0);
+            $table->tinyInteger('shop')->default(0);
+            $table->text('content')->nullable();
             $table->timestamps();
 
             $table->foreign('userId', 'products_userId_foreign_key')->references('id')->on('users')->onDelete('cascade');

@@ -20,9 +20,9 @@ class CreateTransactionsTable extends Migration
             $table->bigInteger('userId')->unsigned()->nullable();
             $table->bigInteger('orderId')->unsigned()->nullable();
             $table->string('code');
-            $table->tinyInteger('type')->default(0);
-            $table->tinyInteger('mode')->default(0);
-            $table->tinyInteger('status')->default(0);
+            $table->smallInteger('type')->default(0);
+            $table->smallInteger('mode')->default(0);
+            $table->smallInteger('status')->default(0);
             $table->text('content')->nullable();
             $table->timestamps();
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entities;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
@@ -9,7 +9,7 @@ use Prettus\Repository\Traits\TransformableTrait;
 /**
  * Class Transaction.
  *
- * @package namespace App\Entities;
+ * @package namespace App\Models;
  */
 class Transaction extends Model implements Transformable
 {
@@ -20,6 +20,6 @@ class Transaction extends Model implements Transformable
      *
      * @var array
      */
-    protected $fillable = [];
+    protected $fillable = ['userId', 'orderId', 'code', 'type', 'mode', 'status', 'content'];
 
 }

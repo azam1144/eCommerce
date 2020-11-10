@@ -3,7 +3,7 @@
 namespace App\Transformers;
 
 use League\Fractal\TransformerAbstract;
-use App\Entities\Transaction;
+use App\Models\Transaction;
 
 /**
  * Class TransactionTransformer.
@@ -15,7 +15,7 @@ class TransactionTransformer extends TransformerAbstract
     /**
      * Transform the Transaction entity.
      *
-     * @param \App\Entities\Transaction $model
+     * @param \App\Models\Transaction $model
      *
      * @return array
      */

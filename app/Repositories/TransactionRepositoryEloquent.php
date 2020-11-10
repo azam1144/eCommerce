@@ -5,7 +5,7 @@ namespace App\Repositories;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\TransactionRepository;
-use App\Entities\Transaction;
+use App\Models\Transaction;
 use App\Validators\TransactionValidator;
 
 /**

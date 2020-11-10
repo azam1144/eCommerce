@@ -3,7 +3,7 @@
 namespace App\Transformers;
 
 use League\Fractal\TransformerAbstract;
-use App\Entities\Category;
+use App\Models\Category;
 
 /**
  * Class CategoryTransformer.
@@ -15,7 +15,7 @@ class CategoryTransformer extends TransformerAbstract
     /**
      * Transform the Category entity.
      *
-     * @param \App\Entities\Category $model
+     * @param \App\Models\Category $model
      *
      * @return array
      */

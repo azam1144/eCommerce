@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a8e728dd-2df1-41fa-919f-1921fb0ad30d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_10_160855_create_categories_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_11_10_160855_create_categories_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_10_160938_create_products_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_11_10_160938_create_products_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/RepositoryServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RepositoryServiceProvider.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_10_184312_create_orders_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_11_10_184312_create_orders_table.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -115,7 +114,7 @@
           <entry key="env" value="1" />
           <entry key="gitignore" value="1" />
           <entry key="log" value="1" />
-          <entry key="php" value="16" />
+          <entry key="php" value="19" />
           <entry key="sql" value="1" />
         </counts>
       </usages-collector>
@@ -123,7 +122,7 @@
         <counts>
           <entry key=".env file" value="1" />
           <entry key="Log" value="1" />
-          <entry key="PHP" value="16" />
+          <entry key="PHP" value="19" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="Scratch" value="1" />
           <entry key="UML" value="1" />
@@ -132,14 +131,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="env" value="9" />
-          <entry key="php" value="199" />
+          <entry key="php" value="263" />
           <entry key="txt" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key=".env file" value="9" />
-          <entry key="PHP" value="199" />
+          <entry key="PHP" value="263" />
           <entry key="PLAIN_TEXT" value="9" />
         </counts>
       </usages-collector>
@@ -153,8 +152,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/database/migrations/2020_11_10_184312_create_orders_table.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
-              <caret line="25" column="44" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="44" />
+            <state relative-caret-position="539">
+              <caret line="45" column="119" selection-start-line="45" selection-start-column="119" selection-end-line="45" selection-end-column="119" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2020_11_10_160938_create_products_table.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="34" selection-start-line="34" selection-end-line="35" />
             </state>
           </provider>
         </entry>
@@ -185,6 +193,8 @@
         <option value="$PROJECT_DIR$/app/Models/Product.php" />
         <option value="$PROJECT_DIR$/database/migrations/2020_11_10_160938_create_products_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2020_11_10_160855_create_categories_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2020_11_10_185833_create_shippings_table.php" />
+        <option value="$PROJECT_DIR$/app/Providers/RepositoryServiceProvider.php" />
         <option value="$PROJECT_DIR$/database/migrations/2020_11_10_184312_create_orders_table.php" />
       </list>
     </option>
@@ -345,14 +355,13 @@
               <item name="eCommerce" type="b2602c69:ProjectViewProjectNode" />
               <item name="eCommerce" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Entities" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="eCommerce" type="b2602c69:ProjectViewProjectNode" />
               <item name="eCommerce" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="eCommerce" type="b2602c69:ProjectViewProjectNode" />
@@ -418,12 +427,12 @@
       <workItem from="1604829847827" duration="1297000" />
       <workItem from="1604948234493" duration="31000" />
       <workItem from="1604948276376" duration="477000" />
-      <workItem from="1605021773498" duration="9076000" />
+      <workItem from="1605021773498" duration="9787000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11652000" />
+    <option name="totallyTimeSpent" value="12363000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -594,13 +603,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2020_11_10_160938_create_products_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="20" column="65" selection-start-line="20" selection-start-column="65" selection-end-line="20" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2020_11_10_160855_create_categories_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -611,10 +613,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2020_11_10_185833_create_shippings_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Providers/RepositoryServiceProvider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="117" selection-start-line="27" selection-start-column="117" selection-end-line="27" selection-end-column="117" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2020_11_10_160938_create_products_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="34" selection-start-line="34" selection-end-line="35" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2020_11_10_184312_create_orders_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="25" column="44" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="44" />
+        <state relative-caret-position="539">
+          <caret line="45" column="119" selection-start-line="45" selection-start-column="119" selection-end-line="45" selection-end-column="119" />
         </state>
       </provider>
     </entry>

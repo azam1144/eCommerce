@@ -19,7 +19,19 @@ class Product extends Model implements Transformable
      * The attributes that are mass assignable.
      *
      * @var array
+     * $table->bigInteger('userId')->unsigned();
+    $table->string('title');
+    $table->string('metaTitle')->nullable();
+    $table->string('slug');
+    $table->text('summary')->nullable();
+    $table->tinyInteger('type');
+    $table->string('sku');
+    $table->float('price');
+    $table->float('discount');
+    $table->tinyInteger('quantity');
+    $table->tinyInteger('shop');
+    $table->text('content');
      */
-    protected $fillable = [];
+    protected $fillable = ['title', 'metaTitle', 'slug', 'summary', 'type', 'sku', 'price', 'discount', 'quantity', 'shop', 'content'];
 
 }

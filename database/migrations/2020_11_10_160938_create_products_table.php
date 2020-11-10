@@ -20,15 +20,13 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->bigInteger('userId')->unsigned()->nullable();
             $table->string('title');
-            $table->string('metaTitle')->nullable();
-            $table->string('slug');
-            $table->text('summary')->nullable();
-            $table->smallInteger('type')->default(0);
-            $table->string('sku');
-            $table->float('price')->default(0);
-            $table->float('discount')->default(0);
+            $table->string('metaTitle')->nullable(); //meta title to be used for browser title.
+            $table->string('slug'); //slug to form the URL.
+            $table->text('summary')->nullable(); //The summary to mention the key highlights.
+            $table->string('sku'); // Stock Keeping Unit - a unique id to rack product in store.
+            $table->float('price')->default(0.0);
+            $table->float('discount')->default(0.0);
             $table->smallInteger('quantity')->default(0);
-            $table->tinyInteger('shop')->default(0);
             $table->text('content')->nullable();
             $table->timestamps();
 

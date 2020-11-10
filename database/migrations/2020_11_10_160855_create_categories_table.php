@@ -20,7 +20,7 @@ class CreateCategoriesTable extends Migration
             $table->bigInteger('parentId')->unsigned()->nullable();
             $table->string('title');
             $table->string('metaTitle')->nullable();
-            $table->string('slug');
+            $table->string('slug'); //slug to form the URL.
             $table->text('content')->nullable();
             $table->timestamps();
 

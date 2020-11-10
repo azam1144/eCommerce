@@ -19,9 +19,9 @@ class CreateProductReviewsTable extends Migration
             $table->id();
             $table->bigInteger('productId')->unsigned();
             $table->bigInteger('parentId')->unsigned()->nullable();
-            $table->string('title');
-            $table->smallInteger('rating')->default(0);
-            $table->tinyInteger('published')->default(0);
+            $table->string('title'); //The review title.
+            $table->smallInteger('rating')->default(0); //The review rating.
+            $table->boolean('published')->default(0); // to identify whether the review is publicly available.
             $table->text('content')->nullable();
             $table->timestamps();
 

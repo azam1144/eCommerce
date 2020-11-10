@@ -18,21 +18,21 @@ class CreateOrdersTable extends Migration
 		Schema::create('orders', function(Blueprint $table) {
             $table->id();
             $table->bigInteger('userId')->unsigned()->nullable();
-            $table->string('sessionId');
-            $table->string('token');
-            $table->smallInteger('status')->default(0);
-            $table->float('total');
-            $table->float('subTotal');
-            $table->float('discount');
-            $table->float('itemDiscount');
-            $table->float('tax');
-            $table->float('grandTotal');
-            $table->string('promo')->nullable();
+            $table->string('sessionId'); //The unique session id associated with the order.
+            $table->string('token'); //The unique token associated with the order to identify it over multiple sessions.
+            $table->enum('status', ['New', 'Checkout', 'Paid', 'Failed', 'Shipped', 'Delivered', 'Returned', 'Complete'])->default('New');
+            $table->float('total')->default(0.0);
+            $table->float('subTotal')->default(0.0);
+            $table->float('discount')->default(0.0);
+            $table->float('itemDiscount')->default(0.0);
+            $table->float('tax')->default(0.0); // tax on the Order Items.
+            $table->float('grandTotal')->default(0.0); //The grand total of the order to be paid by the buyer.
+            $table->string('promo')->nullable(); //promo code with the Order.
             $table->text('content')->nullable();
 
 
-            $table->float('shipping');
-            $table->string('firstName')->nullable();
+            $table->float('shipping')->default(0.0); //shipping charges
+            $table->string('firstName')->nullable(); //first name of the user.
             $table->string('lastName')->nullable();
             $table->string('mobile')->nullable();
             $table->string('email')->nullable();

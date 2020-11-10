@@ -19,10 +19,10 @@ class CreateTransactionsTable extends Migration
             $table->id();
             $table->bigInteger('userId')->unsigned()->nullable();
             $table->bigInteger('orderId')->unsigned()->nullable();
-            $table->string('code');
-            $table->smallInteger('type')->default(0);
-            $table->smallInteger('mode')->default(0);
-            $table->smallInteger('status')->default(0);
+            $table->string('code'); // payment id, provided by the payment gateway.
+            $table->enum('type', ['Credit', 'Debit'])->default('Debit');
+            $table->enum('mode', ['Cash On Delivery', 'Cheque', 'Online'])->default('Cash On Delivery');
+            $table->enum('status', ['New', 'Cancelled', 'Failed', 'Pending', 'Declined', 'Rejected', 'Success'])->default('New');
             $table->text('content')->nullable();
             $table->timestamps();
 

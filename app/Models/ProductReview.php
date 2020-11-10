@@ -22,6 +22,14 @@ class ProductReview extends Model implements Transformable
 
 
     /**
+     * Get the reviews that owns by a review.
+     */
+    function reviews(){
+        return $this->hasMany('App\Models\ProductReview', 'parentId');
+    }
+
+
+    /**
      * Get the product that owns the reviews.
      */
     public function product()

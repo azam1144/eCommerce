@@ -31,6 +31,7 @@ class Transaction extends Model implements Transformable
         return $this->belongsTo('App\Models\User');
     }
 
+    
     /**
      * Get the order that owns the transaction.
      */

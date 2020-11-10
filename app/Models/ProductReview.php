@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entities;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
@@ -8,8 +8,6 @@ use Prettus\Repository\Traits\TransformableTrait;
 
 /**
  * Class ProductReview.
- *
- * @package namespace App\Entities;
  */
 class ProductReview extends Model implements Transformable
 {
@@ -20,6 +18,14 @@ class ProductReview extends Model implements Transformable
      *
      * @var array
      */
-    protected $fillable = [];
+    protected $fillable = ['productId', 'parentId', 'title', 'rating',  'published', 'content'];
 
+
+    /**
+     * Get the product that owns the reviews.
+     */
+    public function product()
+    {
+        return $this->belongsTo('App\Models\Product');
+    }
 }

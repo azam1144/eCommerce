@@ -23,6 +23,10 @@ class CreateOrderItemTable extends Migration
             $table->smallInteger('quantity')->default(0);
             $table->text('content')->nullable();
             $table->timestamps();
+
+            $table->foreign('productId', 'order_item_productId_foreign_key')->references('id')->on('products')->onDelete('cascade');
+            $table->foreign('orderId', 'order_item_orderId_foreign_key')->references('id')->on('orders')->onDelete('cascade');
+
         });
     }
 

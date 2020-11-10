@@ -3,7 +3,7 @@
 namespace App\Transformers;
 
 use League\Fractal\TransformerAbstract;
-use App\Entities\ProductReview;
+use App\Models\ProductReview;
 
 /**
  * Class ProductReviewTransformer.
@@ -15,7 +15,7 @@ class ProductReviewTransformer extends TransformerAbstract
     /**
      * Transform the ProductReview entity.
      *
-     * @param \App\Entities\ProductReview $model
+     * @param \App\Models\ProductReview $model
      *
      * @return array
      */

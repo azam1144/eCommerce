@@ -5,7 +5,7 @@ namespace App\Repositories;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\ProductReviewRepository;
-use App\Entities\ProductReview;
+use App\Models\ProductReview;
 use App\Validators\ProductReviewValidator;
 
 /**

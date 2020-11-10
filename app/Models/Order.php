@@ -26,4 +26,28 @@ class Order extends Model implements Transformable
         'line2', 'city', 'province', 'country'
     ];
 
+    /**
+     * Get the user that owns the order.
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
+
+
+    /**
+     * Get the product that belong to order.
+     */
+    public function products()
+    {
+        return $this->belongsToMany('App\Models\Product');
+    }
+
+    /**
+     * Get the transactions for the order.
+     */
+    public function transactions()
+    {
+        return $this->hasMany('App\Models\Transaction');
+    }
 }

@@ -25,8 +25,8 @@ class CreateProductReviewsTable extends Migration
             $table->text('content')->nullable();
             $table->timestamps();
 
-            $table->foreign('userId', 'product_reviews_productId_foreign_key')->references('id')->on('products')->onDelete('cascade');
-            $table->foreign('userId', 'product_reviews_parentId_foreign_key')->references('id')->on('product_reviews')->onDelete('cascade');
+            $table->foreign('productId', 'product_reviews_productId_foreign_key')->references('id')->on('products')->onDelete('cascade');
+            $table->foreign('parentId', 'product_reviews_parentId_foreign_key')->references('id')->on('product_reviews')->onDelete('cascade');
         });
 	}
 

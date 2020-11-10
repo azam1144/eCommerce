@@ -22,4 +22,20 @@ class Transaction extends Model implements Transformable
      */
     protected $fillable = ['userId', 'orderId', 'code', 'type', 'mode', 'status', 'content'];
 
+
+    /**
+     * Get the user that owns the transaction.
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
+
+    /**
+     * Get the order that owns the transaction.
+     */
+    public function order()
+    {
+        return $this->belongsTo('App\Models\Order');
+    }
 }

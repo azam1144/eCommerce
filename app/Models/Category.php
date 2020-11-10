@@ -22,4 +22,19 @@ class Category extends Model implements Transformable
      */
     protected $fillable = ['parentId', 'title', 'metaTitle', 'slug', 'content'];
 
+
+    /**
+     * Get the categories that owns by a category.
+     */
+    function categories(){
+        return $this->hasMany('App\Models\Category', 'parentId');
+    }
+
+    /**
+     * The products that belong to the category.
+     */
+    public function products()
+    {
+        return $this->belongsToMany('App\Models\Product');
+    }
 }

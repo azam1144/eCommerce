@@ -21,7 +21,7 @@ class CreateCategoriesTable extends Migration
             $table->string('title');
             $table->string('metaTitle')->nullable();
             $table->string('slug');
-            $table->string('content')->nullable();
+            $table->text('content')->nullable();
             $table->timestamps();
 
             $table->foreign('parentId', 'categories_parentId_foreign_key')->references('id')->on('categories')->onDelete('cascade');

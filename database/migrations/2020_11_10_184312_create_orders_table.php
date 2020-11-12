@@ -17,7 +17,7 @@ class CreateOrdersTable extends Migration
 	{
 		Schema::create('orders', function(Blueprint $table) {
             $table->id();
-            $table->bigInteger('userId')->unsigned()->nullable();
+            $table->bigInteger('user_id')->unsigned()->nullable();
             $table->string('sessionId'); //The unique session id associated with the order.
             $table->string('token'); //The unique token associated with the order to identify it over multiple sessions.
             $table->enum('status', ['New', 'Checkout', 'Paid', 'Failed', 'Shipped', 'Delivered', 'Returned', 'Complete'])->default('New');
@@ -43,7 +43,7 @@ class CreateOrdersTable extends Migration
             $table->string('country')->nullable();
             $table->timestamps();
 
-            $table->foreign('userId', 'orders_userId_foreign_key')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id', 'orders_userId_foreign_key')->references('id')->on('users')->onDelete('cascade');
         });
 	}
 

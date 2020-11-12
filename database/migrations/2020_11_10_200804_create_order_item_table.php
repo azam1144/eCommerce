@@ -15,8 +15,8 @@ class CreateOrderItemTable extends Migration
     {
         Schema::create('order_item', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('productId')->unsigned();
-            $table->bigInteger('orderId')->unsigned();
+            $table->bigInteger('product_id')->unsigned();
+            $table->bigInteger('order_id')->unsigned();
             $table->string('sku'); //Stock Keeping Unit - a unique id of product while purchasing it.
             $table->float('price')->default(0.0);
             $table->float('discount')->default(0.0);
@@ -24,8 +24,8 @@ class CreateOrderItemTable extends Migration
             $table->text('content')->nullable();
             $table->timestamps();
 
-            $table->foreign('productId', 'order_item_productId_foreign_key')->references('id')->on('products')->onDelete('cascade');
-            $table->foreign('orderId', 'order_item_orderId_foreign_key')->references('id')->on('orders')->onDelete('cascade');
+            $table->foreign('product_id', 'order_item_productId_foreign_key')->references('id')->on('products')->onDelete('cascade');
+            $table->foreign('order_id', 'order_item_orderId_foreign_key')->references('id')->on('orders')->onDelete('cascade');
 
         });
     }

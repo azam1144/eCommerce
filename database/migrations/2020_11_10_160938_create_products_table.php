@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
 	{
 		Schema::create('products', function(Blueprint $table) {
             $table->id();
-            $table->bigInteger('userId')->unsigned()->nullable(); //The user id to identify the admin or vendor.
+            $table->bigInteger('user_id')->unsigned()->nullable(); //The user id to identify the admin or vendor.
             $table->string('title');
             $table->string('metaTitle')->nullable(); //meta title to be used for browser title.
             $table->string('slug'); //slug to form the URL.
@@ -28,9 +28,10 @@ class CreateProductsTable extends Migration
             $table->float('discount')->default(0.0);
             $table->smallInteger('quantity')->default(0);
             $table->text('content')->nullable();
+            $table->string('imageUrl')->nullable();
             $table->timestamps();
 
-            $table->foreign('userId', 'products_userId_foreign_key')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id', 'products_userId_foreign_key')->references('id')->on('users')->onDelete('cascade');
 		});
 	}
 

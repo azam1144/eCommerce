@@ -21,7 +21,7 @@ class Order extends Model implements Transformable
      * @var array
      */
     protected $fillable = [
-        'userId', 'sessionId', 'token', 'status', 'total', 'subTotal', 'discount', 'itemDiscount', 'tax',
+        'user_id', 'sessionId', 'token', 'status', 'total', 'subTotal', 'discount', 'itemDiscount', 'tax',
         'grandTotal', 'promo', 'content', 'shipping', 'firstName', 'lastName', 'mobile', 'email', 'line1',
         'line2', 'city', 'province', 'country'
     ];

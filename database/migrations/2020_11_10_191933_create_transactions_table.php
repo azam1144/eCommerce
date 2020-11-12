@@ -17,8 +17,8 @@ class CreateTransactionsTable extends Migration
 	{
 		Schema::create('transactions', function(Blueprint $table) {
             $table->id();
-            $table->bigInteger('userId')->unsigned()->nullable();
-            $table->bigInteger('orderId')->unsigned()->nullable();
+            $table->bigInteger('user_id')->unsigned()->nullable();
+            $table->bigInteger('order_id')->unsigned()->nullable();
             $table->string('code'); // payment id, provided by the payment gateway.
             $table->enum('type', ['Credit', 'Debit'])->default('Debit');
             $table->enum('mode', ['Cash On Delivery', 'Cheque', 'Online'])->default('Cash On Delivery');
@@ -26,8 +26,8 @@ class CreateTransactionsTable extends Migration
             $table->text('content')->nullable();
             $table->timestamps();
 
-            $table->foreign('userId', 'transactions_userId_foreign_key')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('orderId', 'transactions_orderId_foreign_key')->references('id')->on('orders')->onDelete('cascade');
+            $table->foreign('user_id', 'transactions_userId_foreign_key')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('order_id', 'transactions_orderId_foreign_key')->references('id')->on('orders')->onDelete('cascade');
         });
 	}
 

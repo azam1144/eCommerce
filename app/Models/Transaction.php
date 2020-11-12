@@ -20,7 +20,7 @@ class Transaction extends Model implements Transformable
      *
      * @var array
      */
-    protected $fillable = ['userId', 'orderId', 'code', 'type', 'mode', 'status', 'content'];
+    protected $fillable = ['user_id', 'order_id', 'code', 'type', 'mode', 'status', 'content'];
 
 
     /**
@@ -31,7 +31,6 @@ class Transaction extends Model implements Transformable
         return $this->belongsTo('App\Models\User');
     }
 
-    
     /**
      * Get the order that owns the transaction.
      */

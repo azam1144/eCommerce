@@ -20,7 +20,7 @@ class Product extends Model implements Transformable
      *
      * @var array
      */
-    protected $fillable = ['title', 'metaTitle', 'slug', 'summary', 'sku', 'price', 'discount', 'quantity', 'content'];
+    protected $fillable = ['title', 'metaTitle', 'slug', 'summary', 'sku', 'price', 'discount', 'quantity', 'imageUrl', 'content', 'user_id'];
 
     /**
      * Get the user that owns the products.

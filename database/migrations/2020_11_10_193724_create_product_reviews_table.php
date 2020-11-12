@@ -17,7 +17,7 @@ class CreateProductReviewsTable extends Migration
 	{
 		Schema::create('product_reviews', function(Blueprint $table) {
             $table->id();
-            $table->bigInteger('productId')->unsigned();
+            $table->bigInteger('product_id')->unsigned();
             $table->bigInteger('parentId')->unsigned()->nullable();
             $table->string('title'); //The review title.
             $table->smallInteger('rating')->default(0); //The review rating.
@@ -25,7 +25,7 @@ class CreateProductReviewsTable extends Migration
             $table->text('content')->nullable();
             $table->timestamps();
 
-            $table->foreign('productId', 'product_reviews_productId_foreign_key')->references('id')->on('products')->onDelete('cascade');
+            $table->foreign('product_id', 'product_reviews_productId_foreign_key')->references('id')->on('products')->onDelete('cascade');
             $table->foreign('parentId', 'product_reviews_parentId_foreign_key')->references('id')->on('product_reviews')->onDelete('cascade');
         });
 	}

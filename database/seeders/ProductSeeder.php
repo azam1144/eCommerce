@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Images;
 use App\Models\Product;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Arr;
@@ -16,7 +17,7 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        $json = Storage::get('public/mockups/products.json');
+        $json = Storage::get('public/mockups/productsNew.json');
         $data = json_decode($json);
         $categoryIds = [9010, 9011, 9012, 9013, 9014, 9015, 9016, 9017];
         foreach ($data as $obj) {
@@ -34,6 +35,13 @@ class ProductSeeder extends Seeder
             ]);
 
             $product->categories()->attach(Arr::random($categoryIds));
+
+            foreach ($obj->images as $img) {
+                Images::create([
+                    'name' => $img,
+                    'product_id' => $product->id,
+                ]);
+            }
         }
     }
 }

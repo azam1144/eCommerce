@@ -31,6 +31,14 @@ class Product extends Model implements Transformable
     }
 
     /**
+     * Get the images for the product.
+     */
+    public function images()
+    {
+        return $this->hasMany('App\Models\Images');
+    }
+
+    /**
      * The categories that belong to the product.
      */
     public function categories()

@@ -707,7 +707,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <h5><a href="#">White Skirts</a></h5>
+                            <h5><a href="#"> </a></h5>
                             <div class="simpleCart_shelfItem">
                                 <p class="flexisel_ecommerce_cart"><span>$323</span> <i class="item_price">$310</i></p>
                                 <p><a class="item_add" href="#">Add to cart</a></p>

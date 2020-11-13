@@ -14,9 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $user = Auth::user();
-        dd($user);
-//        $this->call(CategorySeeder::class);
-//        $this->call(ProductSeeder::class);
+        $this->call(CategorySeeder::class);
+        $this->call(ProductSeeder::class);
     }
 }

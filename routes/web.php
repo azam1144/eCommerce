@@ -18,5 +18,5 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
+    return view('eCommerce.products.women-fashion-products');
 })->name('dashboard');

@@ -145,35 +145,8 @@
                         <div class="clearfix"> </div>
                     </div>
                     <div class="w3ls_dresses_grid_right_grid3">
-                        <div class="col-md-4 agileinfo_new_products_grid agileinfo_new_products_grid_dresses">
-                            <div class="agile_ecommerce_tab_left dresses_grid">
-                                <div class="hs-wrapper hs-wrapper2">
-                                    <img src="{{ asset('images/p1.jpg') }}" alt=" " class="img-responsive" />
-                                    <img src="{{ asset('images/p2.jpg') }}" alt=" " class="img-responsive" />
-                                    <img src="{{ asset('images/p3.jpg') }}" alt=" " class="img-responsive" />
-                                    <img src="{{ asset('images/p1.jpg') }}" alt=" " class="img-responsive" />
-                                    <img src="{{ asset('images/p2.jpg') }}" alt=" " class="img-responsive" />
-                                    <img src="{{ asset('images/p3.jpg') }}" alt=" " class="img-responsive" />
-                                    <img src="{{ asset('images/p1.jpg') }}" alt=" " class="img-responsive" />
-                                    <img src="{{ asset('images/p2.jpg') }}" alt=" " class="img-responsive" />
-                                    <div class="w3_hs_bottom w3_hs_bottom_sub1">
-                                        <ul>
-                                            <li>
-                                                <a href="#" data-toggle="modal" data-target="#myModal9"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <h5><a href="#">Mascara Limited Edition</a></h5>
-                                <div class="simpleCart_shelfItem">
-                                    <p><span>$420</span> <i class="item_price">$340</i></p>
-                                    <p><a class="item_add" href="#">Add to cart</a></p>
-                                </div>
-                                <div class="dresses_grid_pos">
-                                    <h6>New</h6>
-                                </div>
-                            </div>
-                        </div>
+
+
                         <div class="col-md-4 agileinfo_new_products_grid agileinfo_new_products_grid_dresses">
                             <div class="agile_ecommerce_tab_left dresses_grid">
                                 <div class="hs-wrapper hs-wrapper2">

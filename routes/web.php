@@ -17,6 +17,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('eCommerce.products.women-fashion-products');
-})->name('dashboard');
+//Route::middleware(['auth:sanctum', 'verified'])->get('/products', function () {
+//    return view('eCommerce.products.women-fashion-products');
+//})->name('products');
+
+
+Route::group([
+    'middleware' => ['auth:sanctum', 'verified'],
+], function () {
+
+    Route::resource('products', 'App\Http\Controllers\ProductsController');
+});

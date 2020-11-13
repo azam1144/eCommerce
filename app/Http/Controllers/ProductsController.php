@@ -51,14 +51,15 @@ class ProductsController extends Controller
         $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
         $products = $this->repository->all();
 
+        dd($products);
         if (request()->wantsJson()) {
 
             return response()->json([
-                'data' => $products,
+                'products' => $products,
             ]);
         }
 
-        return view('products.index', compact('products'));
+        return view('eCommerce.products.women-fashion-products')->with($products);
     }
 
     /**

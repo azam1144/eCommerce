@@ -91,48 +91,42 @@
                                                 <td style="width: 175px;">
                                                     <label for="id_email">Best Email:</label></td>
                                                 <td>
-                                                    <input class="form-control" id="id_email" name="email"
-                                                           required="required" type="text"/>
+                                                    <input class="form-control" id="id_email" name="email"type="text"/>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td style="width: 175px;">
                                                     <label for="id_first_name">First name:</label></td>
                                                 <td>
-                                                    <input class="form-control" id="id_first_name" name="first_name"
-                                                           required="required" type="text"/>
+                                                    <input class="form-control" id="id_first_name" name="first_name"type="text"/>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td style="width: 175px;">
                                                     <label for="id_last_name">Last name:</label></td>
                                                 <td>
-                                                    <input class="form-control" id="id_last_name" name="last_name"
-                                                           required="required" type="text"/>
+                                                    <input class="form-control" id="id_last_name" name="last_name"type="text"/>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td style="width: 175px;">
                                                     <label for="id_address_line_1">Address:</label></td>
                                                 <td>
-                                                    <input class="form-control" id="id_address_line_1"
-                                                           name="address_line_1" required="required" type="text"/>
+                                                    <input class="form-control" id="id_address_line_1"name="address_line_1" type="text"/>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td style="width: 175px;">
                                                     <label for="id_address_line_2">Unit / Suite #:</label></td>
                                                 <td>
-                                                    <input class="form-control" id="id_address_line_2"
-                                                           name="address_line_2" type="text"/>
+                                                    <input class="form-control" id="id_address_line_2"name="address_line_2" type="text"/>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td style="width: 175px;">
                                                     <label for="id_city">City:</label></td>
                                                 <td>
-                                                    <input class="form-control" id="id_city" name="city"
-                                                           required="required" type="text"/>
+                                                    <input class="form-control" id="id_city" name="city"type="text"/>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -154,8 +148,7 @@
                                                 <td style="width: 175px;">
                                                     <label for="id_postalcode">Postalcode:</label></td>
                                                 <td>
-                                                    <input class="form-control" id="id_postalcode" name="postalcode"
-                                                           required="required" type="text"/>
+                                                    <input class="form-control" id="id_postalcode" name="postalcode"type="text"/>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -250,7 +243,7 @@
                                                 </div>
                                             </div>
                                         </fieldset>
-                                        <button type="submit" class="btn btn-success btn-lg" style="width:100%;">Place Order</button>
+                                        <button type="button" class="btn btn-success btn-lg" id="place-order" style="width:100%;">Place Order</button>
                                         <br/>
                                         <div style="text-align: left;"><br/>
                                             By submiting this order you are agreeing to our <a href="/legal/billing/">universal
@@ -261,13 +254,68 @@
                                     </div>
                                 </div>
                             </div>
+                        </form>
                     </div>
                 </div>
-                </form>
             </div>
         </div>
     </div>
-<!-- //checkout -->
+    <div class="modal fade" id="paymentPlanModal" role="dialog">
+        <div class="modal-dialog modal-sm" style="width: 30%;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;</button>
+                    <h4 class="modal-title" id="myModalLabel" style="font-weight: 700">
+                        Pick a Payment Plan</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12" style="padding-left: 37px;">
+                            <p style="font-size: 12px">You are approved! You will nerve pay late fees,payment penalties, or compound iterest</p>
+                            <div class="tab">
+                                <button class="tablinks" onclick="choosePlan(event, '4 month')" id="defaultOpen" style="margin-top: 10px;">
+                                    <div class="row" style="background-color: #fbfbfb; margin-left: 0px;">
+                                        <div class="col-md-7">
+                                            <p style="font-size: 11px;"> $113.17/month.</p>
+                                            <p style="font-size: 11px;"> Total Interest (20% AED)</p>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <h3 style="font-size: 16px; font-weight: 700; margin-top: 24px;"> 4 Months</h3>
+                                        </div>
+                                    </div>
+                                </button>
+                                <button class="tablinks" onclick="choosePlan(event, '6 month')" style="margin-top: 10px;">
+                                    <div class="row" style="background-color: #fbfbfb; margin-left: 0px;">
+                                        <div class="col-md-7">
+                                            <p style="font-size: 11px;"> $126.17/month.</p>
+                                            <p style="font-size: 11px;"> Total Interest (29% AED)</p>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <h3 style="font-size: 16px; font-weight: 700; margin-top: 24px;"> 6 Months</h3>
+                                        </div>
+                                    </div>
+                                </button>
+                                <button class="tablinks" onclick="choosePlan(event, '12 month')" style="margin-top: 10px;">
+                                    <div class="row" style="background-color: #fbfbfb; margin-left: 0px;">
+                                        <div class="col-md-7">
+                                            <p style="font-size: 11px;"> $131.81/month.</p>
+                                            <p style="font-size: 11px;"> Total Interest (30% AED)</p>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <h3 style="font-size: 16px; font-weight: 700; margin-top: 11px;"> 12 Months</h3>
+                                        </div>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- //checkout -->
 @endsection
 
 
@@ -282,8 +330,54 @@
     @parent
     <script src="{{ asset('js/easyResponsiveTabs.js') }}" type="text/javascript"></script>
     <script type="text/javascript" src="{{ asset('js/jquery.flexisel.js') }}"></script>
-
     <script type="text/javascript">
+        function choosePlan(e, plan){
+            console.log('e: ', e);
+            console.log('plan: ', plan);
+
+            $("#paymentPlanModal").modal('show');
+
+            // var notifications = $.get('/notifications/' + id);
+        }
+
+
+        $(document).ready(function(c) {
+           $("#place-order").click( function(){
+               console.log('place-order');
+
+               let AuthUser = "{{{ (Auth::user()) ? Auth::user() : null }}}";
+               console.log('AuthUser: ', AuthUser);
+
+               if (!AuthUser) {
+                   $("#myModal88").modal('show');
+               }
+               else{
+                   $("#paymentPlanModal").modal('show');
+               }
+           });
+
+           $("#loginToUsers").click(function () {
+               console.log('loginToUsers');
+               let action = $('#loginForm').attr('action');
+               let method = $('#loginForm').attr('method');
+               let email = $('#email').val();
+               let password = $('#password').val();
+               let csrf_token = $('input[name="_token"]').val();
+
+               $.ajax({
+                   "url": action ,
+                   "type": method,
+                   "_token": csrf_token,
+                   data: {"_token": csrf_token ,email: email, password: password}
+               });
+
+               $("#myModal88").modal('hide');
+               $("#paymentPlanModal").modal('show');
+
+           })
+        });
+
+
         $(window).load(function() {
             $("#flexiselDemo2").flexisel({
                 visibleItems:4,

@@ -117,13 +117,6 @@
                                             </tr>
                                             <tr>
                                                 <td style="width: 175px;">
-                                                    <label for="id_address_line_2">Unit / Suite #:</label></td>
-                                                <td>
-                                                    <input class="form-control" id="id_address_line_2"name="address_line_2" type="text"/>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="width: 175px;">
                                                     <label for="id_city">City:</label></td>
                                                 <td>
                                                     <input class="form-control" id="id_city" name="city"type="text"/>
@@ -274,7 +267,7 @@
                         <div class="col-md-12" style="padding-left: 37px;">
                             <p style="font-size: 12px">You are approved! You will nerve pay late fees,payment penalties, or compound iterest</p>
                             <div class="tab">
-                                <button class="tablinks" onclick="choosePlan(event, '4 month')" id="defaultOpen" style="margin-top: 10px;">
+                                <button class="tablinks" onclick="choosePlan('113.17', '20%', '4_months')" id="defaultOpen" style="margin-top: 10px;">
                                     <div class="row" style="background-color: #fbfbfb; margin-left: 0px;">
                                         <div class="col-md-7">
                                             <p style="font-size: 11px;"> $113.17/month.</p>
@@ -285,7 +278,7 @@
                                         </div>
                                     </div>
                                 </button>
-                                <button class="tablinks" onclick="choosePlan(event, '6 month')" style="margin-top: 10px;">
+                                <button class="tablinks" onclick="choosePlan('126.17', '29%', '6_months')" style="margin-top: 10px;">
                                     <div class="row" style="background-color: #fbfbfb; margin-left: 0px;">
                                         <div class="col-md-7">
                                             <p style="font-size: 11px;"> $126.17/month.</p>
@@ -296,7 +289,7 @@
                                         </div>
                                     </div>
                                 </button>
-                                <button class="tablinks" onclick="choosePlan(event, '12 month')" style="margin-top: 10px;">
+                                <button class="tablinks" onclick="choosePlan('131.81', '30%', '12_months')" style="margin-top: 10px;">
                                     <div class="row" style="background-color: #fbfbfb; margin-left: 0px;">
                                         <div class="col-md-7">
                                             <p style="font-size: 11px;"> $131.81/month.</p>
@@ -331,37 +324,78 @@
     <script src="{{ asset('js/easyResponsiveTabs.js') }}" type="text/javascript"></script>
     <script type="text/javascript" src="{{ asset('js/jquery.flexisel.js') }}"></script>
     <script type="text/javascript">
-        function choosePlan(e, plan){
-            console.log('e: ', e);
-            console.log('plan: ', plan);
+        function choosePlan(planPrice, interest, plan){
 
-            $("#paymentPlanModal").modal('show');
+            let id_email = $('#id_email').val();
+            let id_first_name = $('#id_first_name').val();
+            let id_last_name = $('#id_last_name').val();
+            let id_phone = $('#id_phone').val();
+            let id_address_line_1 = $('#id_address_line_1').val();
+            let id_city = $('#id_city').val();
+            let id_state = $('#id_state').val();
+            let id_postalcode = $('#id_postalcode').val();
 
-            // var notifications = $.get('/notifications/' + id);
+            let name_on_card = $('#name-on-card').val();
+            let card_number = $('#card-number').val();
+            let card_exp_month = $('#card-exp-month').val();
+            let card_exp_year = $('#card-exp-year').val();
+            let card_cvc = $('#card-cvc').val();
+
+            let csrf_token = $('meta[name="csrf-token"]').attr('content');
+            let product_id = "{{{$product->id}}}";
+            let data = {
+                "_token": csrf_token ,
+                id_email: id_email,
+                id_first_name: id_first_name,
+                id_last_name: id_last_name,
+                id_phone: id_phone,
+                id_address_line_1: id_address_line_1,
+                id_city: id_city,
+                id_state: id_state,
+                id_postalcode: id_postalcode,
+                name_on_card: name_on_card,
+                card_number: card_number,
+                card_exp_month: card_exp_month,
+                card_exp_year: card_exp_year,
+                card_cvc: card_cvc,
+                planPrice: planPrice,
+                interest: interest,
+                plan: plan,
+                product_id: product_id
+            };
+            $.ajax({
+                "url": 'payment' ,
+                "type": 'POST',
+                "_token": csrf_token,
+                data: data,
+                success: function (transaction) {
+                    console.log('transaction: ', transaction)
+                }
+            });
+
+            setTimeout(function () {
+                // $("#paymentPlanModal").modal('hide');
+            }, 1000);
         }
 
 
         $(document).ready(function(c) {
+            var orderCreattion = false;
            $("#place-order").click( function(){
-               console.log('place-order');
-
+               orderCreattion = true;
                let AuthUser = "{{{ (Auth::user()) ? Auth::user() : null }}}";
-               console.log('AuthUser: ', AuthUser);
-
-               if (!AuthUser) {
+               if (!AuthUser)
                    $("#myModal88").modal('show');
-               }
-               else{
+               else
                    $("#paymentPlanModal").modal('show');
-               }
            });
 
            $("#loginToUsers").click(function () {
                console.log('loginToUsers');
                let action = $('#loginForm').attr('action');
                let method = $('#loginForm').attr('method');
-               let email = $('#email').val();
-               let password = $('#password').val();
+               let email = $('#login-email').val();
+               let password = $('#login-password').val();
                let csrf_token = $('input[name="_token"]').val();
 
                $.ajax({
@@ -372,8 +406,35 @@
                });
 
                $("#myModal88").modal('hide');
-               $("#paymentPlanModal").modal('show');
+               if (orderCreattion){
+                   setTimeout(function () {
+                       $("#paymentPlanModal").modal('show');
+                   }, 1000);
+               }
+           });
 
+           $("#registerToUsers").click(function () {
+               let action = $('#registerForm').attr('action');
+               let method = $('#registerForm').attr('method');
+               let name = $('#register-name').val();
+               let email = $('#register-email').val();
+               let password = $('#register-password').val();
+               let password_confirmation = $('#register-password_confirmation').val();
+               let csrf_token = $('input[name="_token"]').val();
+
+               $.ajax({
+                   "url": action ,
+                   "type": method,
+                   "_token": csrf_token,
+                   data: {"_token": csrf_token, name: name, email: email, password: password, password_confirmation: password_confirmation}
+               });
+
+               $("#myModal88").modal('hide');
+               if (orderCreattion){
+                   setTimeout(function () {
+                       $("#paymentPlanModal").modal('show');
+                   }, 1000);
+               }
            })
         });
 

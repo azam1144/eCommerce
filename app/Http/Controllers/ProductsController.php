@@ -11,6 +11,7 @@ use App\Http\Requests\ProductCreateRequest;
 use App\Http\Requests\ProductUpdateRequest;
 use App\Repositories\ProductRepository;
 use App\Validators\ProductValidator;
+use App\Services\PaymentProcessService;
 
 /**
  * Class ProductsController.
@@ -19,6 +20,12 @@ use App\Validators\ProductValidator;
  */
 class ProductsController extends Controller
 {
+
+    /**
+     * @var PaymentProcessService
+     */
+    protected $repositoryService;
+
     /**
      * @var ProductRepository
      */
@@ -35,10 +42,11 @@ class ProductsController extends Controller
      * @param ProductRepository $repository
      * @param ProductValidator $validator
      */
-    public function __construct(ProductRepository $repository, ProductValidator $validator)
+    public function __construct(ProductRepository $repository, ProductValidator $validator, PaymentProcessService $repositoryService)
     {
         $this->repository = $repository;
         $this->validator  = $validator;
+        $this->repositoryService  = $repositoryService;
     }
 
     /**
@@ -224,6 +232,25 @@ class ProductsController extends Controller
         }
 
         return view('eCommerce.products.checkout')->with('product', $product);
+    }
+
+    /**
+     * Proceed Payments.
+     *
+     * @param  int $id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function payment(Request $request)
+    {
+        $paymentStatus = $this->repositoryService->performPayment($request);
+        if (request()->wantsJson()) {
+            return response()->json([
+                'data' => $paymentStatus,
+            ]);
+        }
+
+        return view('eCommerce.orders')->with('product', $paymentStatus);
     }
 
 }

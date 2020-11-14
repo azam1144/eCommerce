@@ -26,12 +26,12 @@
 
                                                     <div>
                                                         <x-jet-label for="email" value="{{ __('Email') }}" />
-                                                        <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+                                                        <x-jet-input id="login-email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
                                                     </div>
 
                                                     <div class="mt-4">
                                                         <x-jet-label for="password" value="{{ __('Password') }}" />
-                                                        <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
+                                                        <x-jet-input id="login-password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
                                                     </div>
 
                                                     <div class="block mt-4">
@@ -59,15 +59,33 @@
 									<div class="tab-2 resp-tab-content" aria-labelledby="tab_item-1">
 										<div class="facts">
 											<div class="register">
-												<form action="#" method="post">			
-													<input placeholder="Name" name="Name" type="text" required="">
-													<input placeholder="Email Address" name="Email" type="email" required="">	
-													<input placeholder="Password" name="Password" type="password" required="">	
-													<input placeholder="Confirm Password" name="Password" type="password" required="">
-													<div class="sign-up">
-														<input type="submit" value="Create Account"/>
-													</div>
-												</form>
+                                                <form id="registerForm" method="POST" action="{{ route('register') }}">
+                                                    @csrf
+
+                                                    <div>
+                                                        <x-jet-label for="name" value="{{ __('Name') }}" />
+                                                        <x-jet-input id="register-name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                                                    </div>
+
+                                                    <div class="mt-4">
+                                                        <x-jet-label for="email" value="{{ __('Email') }}" />
+                                                        <x-jet-input id="register-email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+                                                    </div>
+
+                                                    <div class="mt-4">
+                                                        <x-jet-label for="password" value="{{ __('Password') }}" />
+                                                        <x-jet-input id="register-password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+                                                    </div>
+
+                                                    <div class="mt-4">
+                                                        <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
+                                                        <x-jet-input id="register-password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+                                                    </div>
+
+                                                    <div class="sign-up">
+                                                        <input type="button" id="registerToUsers" class="btn btn-secondary" value="Sign Up"/>
+                                                    </div>
+                                                </form>
 											</div>
 										</div>
 									</div> 			        					            	      

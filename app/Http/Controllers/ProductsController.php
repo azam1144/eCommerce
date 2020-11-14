@@ -51,7 +51,6 @@ class ProductsController extends Controller
         $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
         $products = $this->repository->all();
 
-        dd($products);
         if (request()->wantsJson()) {
 
             return response()->json([
@@ -59,7 +58,7 @@ class ProductsController extends Controller
             ]);
         }
 
-        return view('eCommerce.products.women-fashion-products')->with($products);
+        return view('eCommerce.products.womenFashionProducts')->with('products', $products);
     }
 
     /**
@@ -111,6 +110,7 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
+        dd($id);
         $product = $this->repository->find($id);
 
         if (request()->wantsJson()) {
@@ -202,4 +202,28 @@ class ProductsController extends Controller
 
         return redirect()->back()->with('message', 'Product deleted.');
     }
+
+
+
+    /**
+     * Get product.
+     *
+     * @param  int $id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function checkout($product_id)
+    {
+        $product = $this->repository->find($product_id);
+
+        if (request()->wantsJson()) {
+
+            return response()->json([
+                'data' => $product,
+            ]);
+        }
+
+        return view('eCommerce.products.checkout')->with('product', $product);
+    }
+
 }

@@ -26,5 +26,6 @@ Route::group([
     'middleware' => ['auth:sanctum', 'verified'],
 ], function () {
 
+    Route::get('checkout/{product_id}', 'App\Http\Controllers\ProductsController@checkout')->name('checkout');
     Route::resource('products', 'App\Http\Controllers\ProductsController');
 });

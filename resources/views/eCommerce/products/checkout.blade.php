@@ -84,47 +84,48 @@
                                 <div id="collapseTwo" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <b>Help us keep your account safe and secure, please verify your billing
-                                            information.</b>
+                                            information.</b><br>
+                                        <small style="font-size: 11px; color: forestgreen;">You have to provide these information, please. Thanks</small>
                                         <br/><br/>
                                         <table class="table table-striped" style="font-weight: bold;">
                                             <tr>
                                                 <td style="width: 175px;">
-                                                    <label for="id_email">Best Email:</label></td>
+                                                    <label for="id_email">Best Email *:</label></td>
                                                 <td>
                                                     <input class="form-control" id="id_email" name="email"type="text"/>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td style="width: 175px;">
-                                                    <label for="id_first_name">First name:</label></td>
+                                                    <label for="id_first_name">First name *:</label></td>
                                                 <td>
                                                     <input class="form-control" id="id_first_name" name="first_name"type="text"/>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td style="width: 175px;">
-                                                    <label for="id_last_name">Last name:</label></td>
+                                                    <label for="id_last_name">Last name *:</label></td>
                                                 <td>
                                                     <input class="form-control" id="id_last_name" name="last_name"type="text"/>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td style="width: 175px;">
-                                                    <label for="id_address_line_1">Address:</label></td>
+                                                    <label for="id_address_line_1">Address *:</label></td>
                                                 <td>
                                                     <input class="form-control" id="id_address_line_1"name="address_line_1" type="text"/>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td style="width: 175px;">
-                                                    <label for="id_city">City:</label></td>
+                                                    <label for="id_city">City *:</label></td>
                                                 <td>
                                                     <input class="form-control" id="id_city" name="city"type="text"/>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td style="width: 175px;">
-                                                    <label for="id_state">State:</label></td>
+                                                    <label for="id_state">State *:</label></td>
                                                 <td>
                                                     <select class="form-control" id="id_state" name="state">
                                                         <option value="BHR">Bahrain </option>
@@ -139,14 +140,14 @@
                                             </tr>
                                             <tr>
                                                 <td style="width: 175px;">
-                                                    <label for="id_postalcode">Postalcode:</label></td>
+                                                    <label for="id_postalcode">Postalcode *:</label></td>
                                                 <td>
                                                     <input class="form-control" id="id_postalcode" name="postalcode"type="text"/>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td style="width: 175px;">
-                                                    <label for="id_phone">Phone:</label></td>
+                                                    <label for="id_phone">Phone *:</label></td>
                                                 <td>
                                                     <input class="form-control" id="id_phone" name="phone" type="text"/>
                                                 </td>
@@ -169,14 +170,16 @@
                                         <span class='payment-errors'></span>
                                         <fieldset>
                                             <legend style="font-size: 15px">What method would you like to pay with today?</legend>
+                                            <small style="font-size: 11px; color: forestgreen;">You have to provide these information, please. Thanks</small>
+
                                             <div class="form-group">
-                                                <label class="col-sm-3 control-label" for="card-holder-name" style="font-size: 13px">Name on Card</label>
+                                                <label class="col-sm-3 control-label" for="card-holder-name" style="font-size: 13px">Name on Card *: </label>
                                                 <div class="col-sm-9">
                                                     <input type="text" class="form-control" stripe-data="name" id="name-on-card" placeholder="Card Holder's Name">
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-sm-3 control-label" for="card-number" style="font-size: 13px">Card Number</label>
+                                                <label class="col-sm-3 control-label" for="card-number" style="font-size: 13px">Card Number *: </label>
                                                 <div class="col-sm-9">
                                                     <input type="text" class="form-control" stripe-data="number" id="card-number" placeholder="Debit/Credit Card Number">
                                                     <br/>
@@ -184,7 +187,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="col-sm-3 control-label" for="expiry-month" style="font-size: 13px">Expiration Date</label>
+                                                    <label class="col-sm-3 control-label" for="expiry-month" style="font-size: 13px">Expiration Date *: </label>
                                                     <div class="col-sm-9">
                                                         <div class="row">
                                                             <div class="col-xs-3">
@@ -224,7 +227,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="col-sm-3 control-label" for="cvv" style="font-size: 13px">Card CVC</label>
+                                                    <label class="col-sm-3 control-label" for="cvv" style="font-size: 13px">Card CVC *: </label>
                                                     <div class="col-sm-3">
                                                         <input type="text" class="form-control" stripe-data="cvc"
                                                                id="card-cvc" placeholder="Security Code">
@@ -392,6 +395,10 @@
                         $("#paymentPlanModal").modal('hide');
                         $("#thanksModal").modal('show');
                     }, 1000);
+                },
+                error : function (error) {
+                    $("#paymentPlanModal").modal('hide');
+                    alert('Are you have provide all informations correctly ? Please check!');
                 }
             });
         }

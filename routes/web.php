@@ -13,21 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 
 Route::group([
     'middleware' => ['auth:sanctum', 'verified'],
 ], function () {
 
-
+    Route::get('/', function () {
+        return redirect()->route('orders.index');
+    });
 });
-
-//Route::get('/ordersListing', function () {
-//    return view('eCommerce.dashboard.dashboard');
-//});
 
 Route::post('payment/transaction/success', 'App\Http\Controllers\TransactionsController@transaction')->name('payment-success');
 Route::post('payment/create-paytabs-page', 'App\Http\Controllers\TransactionsController@paytabsPage')->name('paytabs-page');

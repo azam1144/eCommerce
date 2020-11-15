@@ -29,9 +29,9 @@ Route::group([
 
 });
 
-Route::post('checkout/payment/success', 'App\Http\Controllers\ProductsController@payment')->name('payment-success');
-Route::post('checkout/payment', 'App\Http\Controllers\ProductsController@payment')->name('payment');
-Route::get('checkout/{product_id}', 'App\Http\Controllers\ProductsController@checkout')->name('checkout');
+Route::post('payment/transaction/success', 'App\Http\Controllers\TransactionsController@paymentSuccess')->name('payment-success');
+Route::post('payment/create-paytabs-page', 'App\Http\Controllers\TransactionsController@paytabsPage')->name('paytabs-page');
+Route::get('products/checkout/{product_id}', 'App\Http\Controllers\ProductsController@getCheckoutProducts')->name('checkout-products');
 Route::resource('products', 'App\Http\Controllers\ProductsController');
 Route::resource('orders', 'App\Http\Controllers\OrdersController');
 Route::resource('transactions', 'App\Http\Controllers\TransactionsController');

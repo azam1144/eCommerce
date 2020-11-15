@@ -317,7 +317,7 @@
                     <div class="thank-you-pop">
                         <img src="http://goactionstations.co.uk/wp-content/uploads/2017/03/Green-Round-Tick.png" alt="" style="width: 85px; height: 85px; float: left;">
                         <h1>Thank You!</h1>
-                        <p style="font-size: 13px; color: cadetblue;">Your Payment Page is created successfully, Please proceed the payment from the next tab t complete the order. </p>
+                        <p style="font-size: 13px; color: cadetblue;">Your Payment Page is created successfully, Please proceed the payment from the next tab to complete the order. </p>
                         <h3 style="margin-left: 84px; margin-top: 17px;">Congratulations 🎉</h3>
                     </div>
                 </div>
@@ -340,8 +340,9 @@
     <script src="{{ asset('js/easyResponsiveTabs.js') }}" type="text/javascript"></script>
     <script type="text/javascript" src="{{ asset('js/jquery.flexisel.js') }}"></script>
     <script type="text/javascript">
-        function choosePlan(planPrice, interest, plan){
 
+        var loggedIn = null;
+        function choosePlan(planPrice, interest, plan){
             let id_email = $('#id_email').val();
             let id_first_name = $('#id_first_name').val();
             let id_last_name = $('#id_last_name').val();
@@ -380,7 +381,7 @@
                 product_id: product_id
             };
             $.ajax({
-                "url": 'payment' ,
+                "url": '/payment/create-paytabs-page' ,
                 "type": 'POST',
                 "_token": csrf_token,
                 data: data,
@@ -400,7 +401,7 @@
            $("#place-order").click( function(){
                orderCreattion = true;
                let AuthUser = "{{{ (Auth::user()) ? Auth::user() : null }}}";
-               if (!AuthUser)
+               if (!AuthUser && !loggedIn)
                    $("#myModal88").modal('show');
                else
                    $("#paymentPlanModal").modal('show');
@@ -421,6 +422,7 @@
                    data: {"_token": csrf_token ,email: email, password: password}
                });
 
+               loggedIn = true;
                $("#myModal88").modal('hide');
                if (orderCreattion){
                    setTimeout(function () {
@@ -445,6 +447,7 @@
                    data: {"_token": csrf_token, name: name, email: email, password: password, password_confirmation: password_confirmation}
                });
 
+               loggedIn = true;
                $("#myModal88").modal('hide');
                if (orderCreattion){
                    setTimeout(function () {

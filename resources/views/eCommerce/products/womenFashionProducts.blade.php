@@ -349,7 +349,7 @@
             $(".product-image").attr("src", imageUrl);
             $(".product-price").text(product.price);
             $(".item_price").text(product.discount);
-            $(".checkout-btn").attr('href', 'checkout/'+product.id);
+            $(".checkout-btn").attr('href', 'products/checkout/'+product.id);
         }
 
         $(window).load(function() {

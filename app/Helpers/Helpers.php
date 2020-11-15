@@ -24,7 +24,7 @@ class Helpers
     }
 
     public static function getReturnUrl(){
-        return env('APP_URL')."/checkout/payment/success";
+        return env('APP_URL')."/payment/transaction/success";
     }
 
     public static function getSiteUrl(){

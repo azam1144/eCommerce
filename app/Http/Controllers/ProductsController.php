@@ -5,16 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
 use Prettus\Validator\Contracts\ValidatorInterface;
 use Prettus\Validator\Exceptions\ValidatorException;
 use App\Http\Requests\ProductCreateRequest;
 use App\Http\Requests\ProductUpdateRequest;
 use App\Repositories\ProductRepository;
 use App\Validators\ProductValidator;
-use App\Services\PaymentProcessService;
-use App\Jobs\OrderJob;
+
 
 /**
  * Class ProductsController.
@@ -23,12 +20,6 @@ use App\Jobs\OrderJob;
  */
 class ProductsController extends Controller
 {
-
-    /**
-     * @var PaymentProcessService
-     */
-    protected $repositoryService;
-
     /**
      * @var ProductRepository
      */
@@ -45,11 +36,10 @@ class ProductsController extends Controller
      * @param ProductRepository $repository
      * @param ProductValidator $validator
      */
-    public function __construct(ProductRepository $repository, ProductValidator $validator, PaymentProcessService $repositoryService)
+    public function __construct(ProductRepository $repository, ProductValidator $validator)
     {
         $this->repository = $repository;
         $this->validator  = $validator;
-        $this->repositoryService  = $repositoryService;
     }
 
     /**
@@ -217,13 +207,13 @@ class ProductsController extends Controller
 
 
     /**
-     * proceed checkout process.
+     * get checkout-product at checkout page.
      *
      * @param  int $id
      *
      * @return \Illuminate\Http\Response
      */
-    public function checkout($product_id)
+    public function getCheckoutProducts($product_id)
     {
         $product = $this->repository->find($product_id);
 
@@ -235,32 +225,5 @@ class ProductsController extends Controller
         }
 
         return view('eCommerce.products.checkout')->with('product', $product);
-    }
-
-    /**
-     * Proceed Payments.
-     *
-     * @param  int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function payment(Request $request)
-    {
-        $payment = $this->repositoryService->performPayment($request);
-        if (request()->wantsJson()) {
-            return response()->json([
-                'data' => $payment,
-            ]);
-        }
-
-        $orderData = ['id_email' => $request->id_email, 'id_first_name' => $request->id_first_name, 'id_last_name' => $request->id_last_name,
-            'id_phone' => $request->id_phone, 'id_address_line_1' => $request->id_address_line_1, 'id_city' => $request->id_city,
-            'id_state' => $request->id_state, 'id_postalcode' => $request->id_postalcode, 'name_on_card' => $request->name_on_card,
-            'card_number' => $request->card_number, 'card_exp_month' => $request->card_exp_month, 'card_exp_year' => $request->card_exp_year,
-            'card_cvc' => $request->card_cvc, 'planPrice' => $request->planPrice, 'interest' => $request->interest,
-            'plan' => $request->plan,  'product_id' => $request->product_id];
-
-        OrderJob::dispatch($orderData, $payment);
-        return response()->json($payment);
     }
 }

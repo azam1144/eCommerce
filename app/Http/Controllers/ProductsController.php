@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Prettus\Validator\Contracts\ValidatorInterface;
 use Prettus\Validator\Exceptions\ValidatorException;
 use App\Http\Requests\ProductCreateRequest;
@@ -12,6 +14,7 @@ use App\Http\Requests\ProductUpdateRequest;
 use App\Repositories\ProductRepository;
 use App\Validators\ProductValidator;
 use App\Services\PaymentProcessService;
+use App\Jobs\OrderJob;
 
 /**
  * Class ProductsController.
@@ -243,12 +246,21 @@ class ProductsController extends Controller
      */
     public function payment(Request $request)
     {
-        $paymentStatus = $this->repositoryService->performPayment($request);
+        $payment = $this->repositoryService->performPayment($request);
         if (request()->wantsJson()) {
             return response()->json([
-                'data' => $paymentStatus,
+                'data' => $payment,
             ]);
         }
-        return response()->json($paymentStatus);
+
+        $orderData = ['id_email' => $request->id_email, 'id_first_name' => $request->id_first_name, 'id_last_name' => $request->id_last_name,
+            'id_phone' => $request->id_phone, 'id_address_line_1' => $request->id_address_line_1, 'id_city' => $request->id_city,
+            'id_state' => $request->id_state, 'id_postalcode' => $request->id_postalcode, 'name_on_card' => $request->name_on_card,
+            'card_number' => $request->card_number, 'card_exp_month' => $request->card_exp_month, 'card_exp_year' => $request->card_exp_year,
+            'card_cvc' => $request->card_cvc, 'planPrice' => $request->planPrice, 'interest' => $request->interest,
+            'plan' => $request->plan,  'product_id' => $request->product_id];
+
+        OrderJob::dispatch($orderData, $payment);
+        return response()->json($payment);
     }
 }

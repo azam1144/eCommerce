@@ -77,7 +77,8 @@ class PaymentProcessService
             if ($result->response_code === '4012'){
                 $res = [
                     'status' => true, 'p_id' => $result->p_id, 'response_code' => $result->response_code,
-                    'payment_url' => $result->payment_url,'result' => $result->result
+                    'payment_url' => $result->payment_url, 'result' => $result->result, 'netTotal' => $netTotal,
+                    'productPrice' => $product->price,
                 ];
                 return response()->json($res);
             }

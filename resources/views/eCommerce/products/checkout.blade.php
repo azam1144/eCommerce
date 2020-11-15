@@ -307,7 +307,23 @@
             </div>
         </div>
     </div>
-
+    <div class="modal fade" id="thanksModal" role="dialog">
+        <div class="modal-dialog modal-sm" style="width: 50%;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label=""><span>×</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="thank-you-pop">
+                        <img src="http://goactionstations.co.uk/wp-content/uploads/2017/03/Green-Round-Tick.png" alt="" style="width: 85px; height: 85px; float: left;">
+                        <h1>Thank You!</h1>
+                        <p style="font-size: 13px; color: cadetblue;">Your Payment Page is created successfully, Please proceed the payment from the next tab t complete the order. </p>
+                        <h3 style="margin-left: 84px; margin-top: 17px;">Congratulations 🎉</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- //checkout -->
 @endsection
 
@@ -369,17 +385,15 @@
                 "_token": csrf_token,
                 data: data,
                 success: function (transaction) {
-                    console.log('transaction: ', transaction);
+                    window.open(transaction.original.payment_url);
 
-                    window.location = transaction.original.payment_url;
+                    setTimeout(function () {
+                        $("#paymentPlanModal").modal('hide');
+                        $("#thanksModal").modal('show');
+                    }, 1000);
                 }
             });
-
-            setTimeout(function () {
-                // $("#paymentPlanModal").modal('hide');
-            }, 1000);
         }
-
 
         $(document).ready(function(c) {
             var orderCreattion = false;
@@ -439,7 +453,6 @@
                }
            })
         });
-
 
         $(window).load(function() {
             $("#flexiselDemo2").flexisel({

@@ -55,7 +55,7 @@
                                                                     <li>{{$product->title}}</li>
                                                                     <li>
                                                                         <div class="simpleCart_shelfItem">
-                                                                            <p><span>${{$product->price}}</span> <i class="item_price">${{$product->discount}}</i></p>
+                                                                            <p><span>${{$product->price}}</span> <i class="item_price">{{$product->discount}} AED</i></p>
                                                                         </div>
                                                                     </li>
                                                                 </ul>
@@ -66,7 +66,7 @@
                                                 <div class="col-md-3">
                                                     <div style="text-align: center;">
                                                         <h3>Order Total</h3>
-                                                        <h3><span style="color:green;">${{$product->discount}}</span></h3>
+                                                        <h3><span style="color:green;">{{$product->discount}} AED</span></h3>
                                                     </div>
                                                 </div>
                                             </div>
@@ -127,13 +127,13 @@
                                                     <label for="id_state">State:</label></td>
                                                 <td>
                                                     <select class="form-control" id="id_state" name="state">
-                                                        <option value="AK">Bahrain </option>
-                                                        <option value="AL">Iraq</option>
-                                                        <option value="AZ">Kuwait</option>
-                                                        <option value="AR">Oman</option>
-                                                        <option value="CA">Qatar</option>
-                                                        <option value="CO">Saudi Arabia</option>
-                                                        <option value="CT">United Arab Emirates</option>
+                                                        <option value="BHR">Bahrain </option>
+                                                        <option value="IRQ">Iraq</option>
+                                                        <option value="KWT">Kuwait</option>
+                                                        <option value="OMN">Oman</option>
+                                                        <option value="QAT">Qatar</option>
+                                                        <option value="SAU">Saudi Arabia</option>
+                                                        <option value="ARE">United Arab Emirates</option>
                                                     </select>
                                                 </td>
                                             </tr>
@@ -369,7 +369,9 @@
                 "_token": csrf_token,
                 data: data,
                 success: function (transaction) {
-                    console.log('transaction: ', transaction)
+                    console.log('transaction: ', transaction);
+
+                    window.location = transaction.original.payment_url;
                 }
             });
 

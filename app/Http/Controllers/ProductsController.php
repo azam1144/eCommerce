@@ -214,7 +214,7 @@ class ProductsController extends Controller
 
 
     /**
-     * Get product.
+     * proceed checkout process.
      *
      * @param  int $id
      *
@@ -249,8 +249,6 @@ class ProductsController extends Controller
                 'data' => $paymentStatus,
             ]);
         }
-
-        return view('eCommerce.orders')->with('product', $paymentStatus);
+        return response()->json($paymentStatus);
     }
-
 }

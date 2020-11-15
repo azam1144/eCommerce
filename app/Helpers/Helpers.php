@@ -1,19 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Bilal
- * Date: 12/17/2018
- * Time: 11:01 AM
- */
+
 namespace App\Helpers;
 
-use App\Models\Shop;
-use Carbon\Carbon;
-use GuzzleHttp\Client;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
-
-class Helper
+class Helpers
 {
     public static function computeNetTotal($productPrice, $planPrice){
         $planPrice = number_format($planPrice, 2, '.', '');
@@ -25,4 +14,21 @@ class Helper
 
         return $netTotal;
     }
+
+    public static function getSecretKey(){
+        return "Yusfazi8ox9YaohFQNhNiNPmkxo6srcrWFH6eZfCxoBINSnEGFsYshlMOKThb6J8LqfZqvBYUdGH53mMIOLb66YVQRd2XWbInqHN";
+    }
+
+    public static function getMerchantKey(){
+        return "azam.arid1144@gmail.com";
+    }
+
+    public static function getReturnUrl(){
+        return env('APP_URL')."/products";
+    }
+
+    public static function getSiteUrl(){
+        return "https://dmdmax.com";
+    }
+
 }

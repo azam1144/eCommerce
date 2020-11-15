@@ -74,6 +74,7 @@ class OrdersController extends Controller
     {
         try {
 
+            dd($request->paymentStatus);
             $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);
 
             $order = $this->repository->create($request->all());

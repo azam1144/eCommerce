@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a8e728dd-2df1-41fa-919f-1921fb0ad30d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/eCommerce/dashboard/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/eCommerce/dashboard/dashboard.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/eCommerce/products/checkout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/eCommerce/products/checkout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -158,6 +155,7 @@
           <entry key="gitignore" value="6" />
           <entry key="html" value="13" />
           <entry key="json" value="551" />
+          <entry key="md" value="1284" />
           <entry key="php" value="10137" />
           <entry key="text" value="4" />
           <entry key="txt" value="9" />
@@ -170,6 +168,7 @@
           <entry key="CSS" value="8" />
           <entry key="HTML" value="13" />
           <entry key="JSON" value="551" />
+          <entry key="Markdown" value="1284" />
           <entry key="PHP" value="5756" />
           <entry key="PLAIN_TEXT" value="45" />
         </counts>
@@ -182,41 +181,21 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/eCommerce/dashboard/dashboard.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="65" column="82" selection-start-line="65" selection-start-column="76" selection-end-line="65" selection-end-column="82" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/eCommerce/products/checkout.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="399" selection-start-line="399" selection-end-line="399" />
-              <folding>
-                <element signature="e#4915#4963#0#HTML" expanded="true" />
-                <element signature="e#11104#11148#0#HTML" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
+            <state relative-caret-position="399">
               <caret line="25" selection-start-line="25" selection-end-line="25" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor />
+              <first_editor relative-caret-position="380">
+                <caret line="25" column="27" lean-forward="true" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
+              </first_editor>
               <second_editor />
             </state>
           </provider>
@@ -260,8 +239,8 @@
       <find>orders</find>
       <find>'/'</find>
       <find>transaction is</find>
-      <find>logout</find>
       <find>route</find>
+      <find>logout</find>
       <find>transac</find>
     </findStrings>
     <replaceStrings>
@@ -296,7 +275,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/views/eCommerce/banners/women-fashion-banner.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/eCommerce/layouts/footer.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/eCommerce/layouts/breadcrumbs.blade.php" />
         <option value="$PROJECT_DIR$/public/css/style.css" />
@@ -347,6 +325,7 @@
         <option value="$PROJECT_DIR$/resources/views/eCommerce/dashboard/dashboard.blade.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/resources/views/eCommerce/products/checkout.blade.php" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -673,12 +652,12 @@
       <workItem from="1605021773498" duration="19104000" />
       <workItem from="1605106386598" duration="18271000" />
       <workItem from="1605198096493" duration="67051000" />
-      <workItem from="1605382255400" duration="34757000" />
+      <workItem from="1605382255400" duration="36166000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="141759000" />
+    <option name="totallyTimeSpent" value="143168000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1055,13 +1034,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/eCommerce/dashboard/dashboard.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="65" column="82" selection-start-line="65" selection-start-column="76" selection-end-line="65" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TransactionsController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="555">
@@ -1079,29 +1051,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
+    <entry file="file://$PROJECT_DIR$/resources/views/eCommerce/products/checkout.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="399" column="54" selection-start-line="399" selection-start-column="50" selection-end-line="399" selection-end-column="54" />
+          <folding>
+            <element signature="e#4915#4963#0#HTML" expanded="true" />
+            <element signature="e#11104#11148#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/eCommerce/dashboard/dashboard.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="65" column="82" selection-start-line="65" selection-start-column="76" selection-end-line="65" selection-end-column="82" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
+        <state relative-caret-position="399">
           <caret line="25" selection-start-line="25" selection-end-line="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/eCommerce/products/checkout.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="399" selection-start-line="399" selection-end-line="399" />
-          <folding>
-            <element signature="e#4915#4963#0#HTML" expanded="true" />
-            <element signature="e#11104#11148#0#HTML" expanded="true" />
-          </folding>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="380">
+            <caret line="25" column="27" lean-forward="true" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>

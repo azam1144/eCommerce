@@ -58,7 +58,7 @@ class OrdersController extends Controller
             ]);
         }
 
-        return view('orders.index', compact('orders'));
+        return view('eCommerce.dashboard.dashboard', compact('orders'));
     }
 
     /**

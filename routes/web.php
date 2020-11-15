@@ -17,10 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::middleware(['auth:sanctum', 'verified'])->get('/products', function () {
-//    return view('eCommerce.products.women-fashion-products');
-//})->name('products');
-
 
 Route::group([
     'middleware' => ['auth:sanctum', 'verified'],
@@ -28,6 +24,10 @@ Route::group([
 
 
 });
+
+//Route::get('/ordersListing', function () {
+//    return view('eCommerce.dashboard.dashboard');
+//});
 
 Route::post('payment/transaction/success', 'App\Http\Controllers\TransactionsController@transaction')->name('payment-success');
 Route::post('payment/create-paytabs-page', 'App\Http\Controllers\TransactionsController@paytabsPage')->name('paytabs-page');

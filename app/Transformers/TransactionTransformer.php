@@ -2,23 +2,14 @@
 
 namespace App\Transformers;
 
-use League\Fractal\TransformerAbstract;
-use App\Models\Transaction;
-
 /**
  * Class TransactionTransformer.
  *
- * @package namespace App\Transformers;
+ * @package $request
  */
-class TransactionTransformer extends TransformerAbstract
+class TransactionTransformer
 {
-    /**
-     * Transform the Transaction entity.
-     *
-     * @param \App\Models\Transaction $model
-     *
-     * @return array
-     */
+
     public function transform($order, $payment)
     {
         return $transaction = [

@@ -2,20 +2,18 @@
 
 namespace App\Transformers;
 
-use League\Fractal\TransformerAbstract;
-use App\Models\Order;
 
 /**
  * Class OrderTransformer.
  *
  * @package namespace App\Transformers;
  */
-class OrderTransformer extends TransformerAbstract
+class OrderTransformer
 {
     /**
      * Transform the Order entity.
      *
-     * @param \App\Models\Order $model
+     * @param $request
      *
      * @return array
      */

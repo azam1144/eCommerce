@@ -377,6 +377,45 @@
             });
 
         });
+
+        $(document).ready(function(c) {
+            $("#loginToUsers").click(function () {
+                console.log('loginToUsers');
+                let action = $('#loginForm').attr('action');
+                let method = $('#loginForm').attr('method');
+                let email = $('#login-email').val();
+                let password = $('#login-password').val();
+                let csrf_token = $('input[name="_token"]').val();
+
+                $.ajax({
+                    "url": action ,
+                    "type": method,
+                    "_token": csrf_token,
+                    data: {"_token": csrf_token ,email: email, password: password}
+                });
+
+                location.reload();
+            });
+
+            $("#registerToUsers").click(function () {
+                let action = $('#registerForm').attr('action');
+                let method = $('#registerForm').attr('method');
+                let name = $('#register-name').val();
+                let email = $('#register-email').val();
+                let password = $('#register-password').val();
+                let password_confirmation = $('#register-password_confirmation').val();
+                let csrf_token = $('input[name="_token"]').val();
+
+                $.ajax({
+                    "url": action ,
+                    "type": method,
+                    "_token": csrf_token,
+                    data: {"_token": csrf_token, name: name, email: email, password: password, password_confirmation: password_confirmation}
+                });
+
+                location.reload();
+            });
+        });
     </script>
     <script type="text/javascript" src="{{ asset('js/jquery.flexisel.js') }}"></script>
 @endsection

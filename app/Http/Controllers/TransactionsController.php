@@ -238,7 +238,7 @@ class TransactionsController extends Controller
     {
         $response = $this->transactionService->transaction($request);
         if ($response['status'])
-            return response()->json(['status' => true, 'message' => 'Transaction is created successfully.']);
+            return response()->json(['status' => true, 'message' => 'Transaction is created successfully.', "resource" => url('/orders')]);
         else
             return response()->json(['status' => false, 'message' => 'There is a problem while creating transaction.']);
     }

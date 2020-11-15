@@ -78,7 +78,7 @@ class PaymentProcessService
                 $res = [
                     'status' => true, 'p_id' => $result->p_id, 'response_code' => $result->response_code,
                     'payment_url' => $result->payment_url, 'result' => $result->result, 'netTotal' => $netTotal,
-                    'productPrice' => $product->price,
+                    'productPrice' => $product->price, 'productSku' => $product->sku,
                 ];
                 return response()->json($res);
             }

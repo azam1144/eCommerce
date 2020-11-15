@@ -20,7 +20,7 @@ class OrderItem extends Model implements Transformable
      *
      * @var string
      */
-    protected $table = 'order_item';
+    protected $table = 'order_product';
 
     /**
      * The attributes that are mass assignable.

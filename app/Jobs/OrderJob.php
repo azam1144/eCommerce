@@ -52,7 +52,7 @@ class OrderJob implements ShouldQueue
 //
 //            dd($this->orderData['id_email']);
 
-            Order::Create(
+            $order = Order::Create(
                 [
                     'user_id' => Auth::user()->id,
                     'sessionId' => Session::getId(),
@@ -70,6 +70,13 @@ class OrderJob implements ShouldQueue
                     'country' => $this->orderData['id_state'],
                 ]
             );
+
+            $product_id = $this->orderData['product_id'];
+            $order->products()->attach($product_id, [
+                'sku' => $this->payment->original['productSku'],
+                'price' => $this->payment->original['productPrice']
+            ]);
+
             return ['status' => true, 'message' => 'data is saved'];
         }catch (Exception $e){
             return ['status' => false, 'message' => $e->getMessage()];

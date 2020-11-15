@@ -46,7 +46,7 @@ class OrderTransformer
             'province' => $request->id_state,
             'country' => $request->id_state,
             'paytabsPageId' => $paytabsPage->original['p_id'],
-            'product_id' => $request->product_id
+            'product_id' => $request->product_id ? $request->product_id : null
         ];
     }
 }

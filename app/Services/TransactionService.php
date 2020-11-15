@@ -3,12 +3,16 @@
 namespace App\Services;
 
 use App\Jobs\OrderJob;
+use App\Models\User;
 use App\Repositories\TransactionRepository;
 use App\Transformers\TransactionTransformer;
 use App\Transformers\OrderTransformer;
 use App\Transformers\SubscriptionTransformer;
 use App\Repositories\OrderRepository;
 use App\Services\PaymentProcessService;
+
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\TransactionsNotification;
 
 class TransactionService
 {
@@ -100,6 +104,9 @@ class TransactionService
                 //Transform the data to create a new transaction in db
                 $transaction = $this->transactionTransformer->transform($order, $payment);
                 $this->repository->create($transaction);
+
+                $user = User::find($order->user_id);
+                Notification::send($user, new TransactionsNotification($transaction));
 
                 return ['status' => true];
             }

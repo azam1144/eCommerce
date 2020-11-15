@@ -6,6 +6,7 @@ use App\Jobs\OrderJob;
 use App\Repositories\TransactionRepository;
 use App\Transformers\TransactionTransformer;
 use App\Transformers\OrderTransformer;
+use App\Transformers\SubscriptionTransformer;
 use App\Repositories\OrderRepository;
 use App\Services\PaymentProcessService;
 
@@ -20,6 +21,11 @@ class TransactionService
      * @var TransactionTransformer
      */
     protected $transactionTransformer;
+
+    /**
+     * @var SubscriptionTransformer
+     */
+    protected $subscriptionTransformer;
 
     /**
      * @var OrderRepository
@@ -41,13 +47,15 @@ class TransactionService
         TransactionTransformer $transactionTransformer,
         OrderRepository $orderRepository,
         PaymentProcessService $paymentProcessService,
-        OrderTransformer $orderTransformer
+        OrderTransformer $orderTransformer,
+        SubscriptionTransformer $subscriptionTransformer
     ){
         $this->repository = $repository;
         $this->orderRepository = $orderRepository;
         $this->paymentProcessService  = $paymentProcessService;
         $this->transactionTransformer  = $transactionTransformer;
         $this->orderTransformer  = $orderTransformer;
+        $this->subscriptionTransformer  = $subscriptionTransformer;
     }
 
     /**
@@ -60,11 +68,15 @@ class TransactionService
             //Create a new paytabs page
             $paytabsPage = $this->paymentProcessService->createPaytabsPage($request);
 
-            //Transform the data to store a new order in db
-            $orderData = $this->orderTransformer->transform($request);
+            //Transform the order-data to store a new order in db
+            $orderData = $this->orderTransformer->transform($request, $paytabsPage);
+
+            //Transform the subscription-data to store a new subscription in db
+            $subscriptionData = $this->subscriptionTransformer->transform($request);
 
             // queue job to create order - it will in background - asynchronous behaviour
-            OrderJob::dispatch($orderData, $paytabsPage);
+            OrderJob::dispatch( $paytabsPage, $orderData, $subscriptionData);
+
             return response()->json($paytabsPage);
 
         } catch (\Exception $e) {

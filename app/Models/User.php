@@ -58,4 +58,36 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+    
+    /**
+     * Get the product for the user.
+     */
+    public function products()
+    {
+        return $this->hasMany('App\Models\product');
+    }
+
+    /**
+     * Get the orders for the user.
+     */
+    public function orders()
+    {
+        return $this->hasMany('App\Models\order');
+    }
+
+    /**
+     * Get the transaction for the user.
+     */
+    public function transactions()
+    {
+        return $this->hasMany('App\Models\transaction');
+    }
+
+    /**
+     * The subscriptions that belong to the user.
+     */
+    public function subscriptions()
+    {
+        return $this->belongsToMany('App\Models\Subscription');
+    }
 }

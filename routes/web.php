@@ -29,3 +29,4 @@ Route::get('products/checkout/{product_id}', 'App\Http\Controllers\ProductsContr
 Route::resource('products', 'App\Http\Controllers\ProductsController');
 Route::resource('orders', 'App\Http\Controllers\OrdersController');
 Route::resource('transactions', 'App\Http\Controllers\TransactionsController');
+Route::resource('subscriptions', 'App\Http\Controllers\SubscriptionsController');

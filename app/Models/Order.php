@@ -50,4 +50,13 @@ class Order extends Model implements Transformable
     {
         return $this->hasMany('App\Models\Transaction');
     }
+
+    /**
+     * Get the subscription record associated with the order.
+     */
+    public function subscription()
+    {
+        return $this->hasOne('App\Models\Subscription');
+    }
+
 }

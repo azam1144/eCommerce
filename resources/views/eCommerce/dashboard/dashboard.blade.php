@@ -61,11 +61,17 @@
                             <div class="dropdown-menu dropdown-menu-right user-dd animated">
                                 <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i>
                                     My Profile</a>
-                                <form method="POST" action="{{ route('logout') }}">
-                                    @csrf
-                                    <a class="dropdown-item" href="{{route('logout')}}" onclick="event.preventDefault(); this.closest('form').submit();"><i class="ti-wallet m-r-5 m-l-5"></i>
-                                        Logout</a>
-                                </form>
+
+                                @auth
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        <a class="dropdown-item" href="{{route('logout')}}" onclick="event.preventDefault(); this.closest('form').submit();"><i class="ti-wallet m-r-5 m-l-5"></i>
+                                            Logout</a>
+                                    </form>
+                                @else
+                                    <a class="dropdown-item" href="{{route('login')}}" ><i class="ti-wallet m-r-5 m-l-5"></i>
+                                        Login</a>
+                                @endauth
                             </div>
                         </li>
                     </ul>
@@ -136,6 +142,7 @@
                                             <th class="border-top-0">Total</th>
                                             <th class="border-top-0">Sub Total</th>
                                             <th class="border-top-0">Promo</th>
+                                            <th class="border-top-0">Plan</th>
                                             <th class="border-top-0">Name</th>
                                             <th class="border-top-0">Mobile</th>
                                             <th class="border-top-0">City</th>
@@ -164,9 +171,14 @@
                                                     @if($order->promo)
                                                         <td>{{$order->promo}}</td>
                                                     @else
-                                                        <td>No</td>
+                                                        <td>Nill</td>
                                                     @endif
 
+                                                    @if($order->subscription)
+                                                        <td>{{$order->subscription->plan}}</td>
+                                                    @else
+                                                        <td>Nill</td>
+                                                    @endif
                                                     <td>{{$order->firstName}} {{$order->lastName}}</td>
                                                     <td>
                                                         <h5 class="m-b-0">{{$order->mobile}}</h5>

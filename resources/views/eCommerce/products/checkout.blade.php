@@ -386,7 +386,7 @@
                 "_token": csrf_token,
                 data: data,
                 success: function (transaction) {
-                    window.open(transaction.original.payment_url);
+                    window.open(transaction.original.original.payment_url);
 
                     setTimeout(function () {
                         $("#paymentPlanModal").modal('hide');
@@ -454,7 +454,13 @@
                        $("#paymentPlanModal").modal('show');
                    }, 1000);
                }
-           })
+           });
+
+            $('#thanksModal').on('hidden.bs.modal', function () {
+                let uri = window.location.toString();
+                uri = uri.split('products')[0];
+                window.location.href = uri+'products';
+            });
         });
 
         $(window).load(function() {

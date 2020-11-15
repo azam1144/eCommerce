@@ -41,6 +41,7 @@ class CreateOrdersTable extends Migration
             $table->string('city')->nullable();
             $table->string('province')->nullable();
             $table->string('country')->nullable();
+            $table->integer('paytabsPageId')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id', 'orders_userId_foreign_key')->references('id')->on('users')->onDelete('cascade');

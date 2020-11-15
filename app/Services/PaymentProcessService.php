@@ -27,7 +27,7 @@ class PaymentProcessService
      *
      * @return array | null
      */
-    public function performPayment($request)
+    public function createPaytabsPage($request)
     {
         try {
             $product = $this->repository->find( $request->product_id);
@@ -89,6 +89,29 @@ class PaymentProcessService
                 ];
                 return response()->json($res);
             }
+        } catch (\Exception $e) {
+            return ['status' => false, 'message' => $e->getMessage()];
+        }
+    }
+
+    /**
+     *
+     * @return array | null
+     */
+    public function paytabsVerifyPayment($request)
+    {
+        try {
+
+            $this->paytabService->paytabs(Helpers::getMerchantKey(), Helpers::getSecretKey());
+            $result = $this->paytabService->verify_payment($request->payment_reference);
+            $res = [
+                'status' => true, 'p_id' => $request->payment_reference, 'pt_invoice_id' => $result->pt_invoice_id,
+                'amount' => $result->amount, 'currency' => $result->currency, 'reference_no' => $result->reference_no,
+                'transaction_id' => $result->transaction_id, 'response' => $result->result, 'response_code' => $result->response_code
+            ];
+            return response()->json($res);
+
+            return response()->json([ 'status' => false ]);
         } catch (\Exception $e) {
             return ['status' => false, 'message' => $e->getMessage()];
         }

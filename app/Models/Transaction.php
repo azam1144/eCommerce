@@ -20,8 +20,7 @@ class Transaction extends Model implements Transformable
      *
      * @var array
      */
-    protected $fillable = ['user_id', 'order_id', 'code', 'type', 'mode', 'status', 'content'];
-
+    protected $fillable = ['user_id', 'order_id', 'mode', 'response', 'response_code', 'amount', 'currency', 'pt_invoice_id', 'reference_no', 'transaction_id'];
 
     /**
      * Get the user that owns the transaction.

@@ -19,11 +19,14 @@ class CreateTransactionsTable extends Migration
             $table->id();
             $table->bigInteger('user_id')->unsigned()->nullable();
             $table->bigInteger('order_id')->unsigned()->nullable();
-            $table->string('code'); // payment id, provided by the payment gateway.
-            $table->enum('type', ['Credit', 'Debit'])->default('Debit');
             $table->enum('mode', ['Cash On Delivery', 'Cheque', 'Online'])->default('Cash On Delivery');
-            $table->enum('status', ['New', 'Cancelled', 'Failed', 'Pending', 'Declined', 'Rejected', 'Success'])->default('New');
-            $table->text('content')->nullable();
+            $table->string('response')->nullable();
+            $table->string('response_code')->nullable();
+            $table->float('amount')->nullable();
+            $table->string('currency')->nullable();
+            $table->string('pt_invoice_id')->nullable();
+            $table->string('reference_no')->nullable();
+            $table->string('transaction_id');
             $table->timestamps();
 
             $table->foreign('user_id', 'transactions_userId_foreign_key')->references('id')->on('users')->onDelete('cascade');

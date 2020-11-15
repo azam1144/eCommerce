@@ -68,6 +68,7 @@ class OrderJob implements ShouldQueue
                     'city' => $this->orderData['id_city'],
                     'province' => $this->orderData['id_state'],
                     'country' => $this->orderData['id_state'],
+                    'paytabsPageId' => $this->payment->original['p_id'],
                 ]
             );
 
